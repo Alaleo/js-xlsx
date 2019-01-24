@@ -11123,7 +11123,7 @@ function write_ws_xml_datavalidation(validations) {
 	var o = '<dataValidations> ';
 	for(var i=0; i < validations.length; i++) {
 		var validation = validations[i];
-		var formula = validation.type === 'list' ? writetag('formula1', '"' + validation.values + '"') : null;
+		var formula = validation.type === 'list' ? writetag('formula1', Array.isArray(validation.values) ? '"' + validation.values + '"' : validation.values) : null;
 		o += writextag('dataValidation', formula, {
 			sqref: validation.sqref,
 			type: validation.type,
